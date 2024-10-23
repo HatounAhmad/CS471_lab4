@@ -14,9 +14,34 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
+# from django.contrib import admin
+# from django.urls import path
+# import apps.bookmodule.views  # Import the view from your bookmodule app
+# import apps.usermodule.views  
 
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('', apps.bookmodule.views.index),  # Map the root URL to your index view
+#     path('hello/', apps.bookmodule.views.index),  # Keep this if you want /hello to work
+# ]
+# from django.contrib import admin
+# from django.urls import path
+# import apps.bookmodule.views  # Import your index view
+# from django.http import HttpResponse
+
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('', apps.bookmodule.views.index),  # Use the index view for the root URL
+#     path('index2/<int:val1>/', apps.bookmodule.views.index2),  # add this line
+#     # path('hello/', apps.bookmodule.views.index),  # Keep this for /hello if needed
+    
+
+# ]
+
+from django.contrib import admin
+from django.urls import include, path
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('books/', include("apps.bookmodule.urls")),
+    path('users/', include("apps.usermodule.urls")),
 ]
