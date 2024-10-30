@@ -1,17 +1,12 @@
 from django.shortcuts import render  # Add this import
-
 from django.http import HttpResponse
 
 def index(request):
-    name = request.GET.get("name") or "world!"
+    name = request.GET.get("name", "world!")
     return HttpResponse(f"Hello, {name}")
 
 def index2(request, val1=0):
-    try:
-        val1 = int(val1)  # Ensure val1 is an integer
-        return HttpResponse(f"value1 = {val1}")
-    except ValueError:
-        return HttpResponse("Error, expected val1 to be an integer")
+    return HttpResponse(f"value1 = {val1}")
 
 
 def viewbook(request, bookId):
@@ -24,3 +19,4 @@ def viewbook(request, bookId):
         targetBook = book2
     context = {'book': targetBook}
     return render(request, 'bookmodule/show.html', context)
+
